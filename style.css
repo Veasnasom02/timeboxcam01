@@ -1,170 +1,153 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-body {
-  background-color: #f9f9f9;
-  padding: 20px;
-}
+    body {
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
 
-.planner-container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
+    .planner-container {
+      width: 80%;
+      max-width: 600px; /* Set max-width for better mobile appearance */
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
 
-.header h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  text-align: center;
-}
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
 
-.date-section {
-  margin-bottom: 20px;
-  text-align: center;
-}
+    .date-section {
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-.content {
-  display: flex;
-  flex-direction: column;
-}
+    .content {
+      display: flex;
+      flex-direction: column; /* Stack on mobile */
+    }
 
-.left-section,
-.right-section {
-  padding: 20px;
-  margin-bottom: 20px;
-}
+    .left-section, .right-section {
+      padding: 20px;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
 
-table,
-th,
-td {
-  border: 1px solid #ddd;
-}
+    table, th, td {
+      border: 1px solid #ddd;
+    }
 
-th,
-td {
-  padding: 8px;
-  text-align: center;
-}
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
 
-.summary {
-  margin-top: 20px;
-}
+    .summary {
+      margin-top: 20px;
+    }
 
-.summary h2 {
-  margin-bottom: 10px;
-}
+    .summary h2 {
+      margin-bottom: 10px;
+    }
 
-#summary-list {
-  list-style-type: none;
-}
+    #summary-list {
+      list-style-type: none;
+    }
 
-.completed-task {
-  text-decoration: line-through;
-  color: green;
-}
+    .completed-task {
+      text-decoration: line-through;
+      color: green;
+    }
 
-.button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    .print-btn, .lang-switch select {
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px 15px;
+      margin: 5px;
+    }
 
-.button:hover {
-  background-color: #45a049;
-}
+    /* Styling for Print Button */
+    .print-btn {
+      background-color: #4CAF50; /* Green */
+      color: white;
+      transition: background-color 0.3s ease;
+      display: block; /* Make it block for better alignment */
+    }
 
-.print-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
+    .print-btn:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
 
-.lang-switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
+    /* Styling for Language Select */
+    .lang-switch select {
+      padding: 10px;
+      border: 1px solid #ccc; /* Light gray border */
+      background-color: white; /* White background */
+      color: #333; /* Dark gray text */
+      transition: border-color 0.3s ease;
+      width: 100%; /* Full width */
+    }
 
-.lang-switch select {
-  padding: 5px;
-  border-radius: 4px;
-}
+    .lang-switch select:hover {
+      border-color: #4CAF50; /* Change border color on hover */
+    }
 
-/* Print Styles */
-@media print {
-  .print-btn,
-  .lang-switch {
-    display: none;
-  }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .content {
+        flex-direction: column; /* Stack sections on mobile */
+      }
+    }
 
-  .planner-container {
-    box-shadow: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
+    /* Print Styles */
+    @media print {
+      .print-btn, .lang-switch {
+        display: none;
+      }
 
-  body {
-    padding: 0;
-  }
-}
+      .planner-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
 
-/* Khmer Font */
-@font-face {
-  font-family: "Khmer OS Battambang";
-  src: url("https://fonts.googleapis.com/css2?family=Khmer+OS+Battambang&display=swap");
-}
+      body {
+        padding: 0;
+      }
+    }
 
-.khmer-font {
-  font-family: "Khmer OS Battambang", sans-serif;
-}
+    /* Khmer Font */
+    @font-face {
+      font-family: 'Khmer OS Battambang';
+      src: url('https://fonts.googleapis.com/css2?family=Khmer+OS+Battambang&display=swap');
+    }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .content {
-    flex-direction: column;
-  }
-
-  .left-section,
-  .right-section {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .planner-container {
-    padding: 10px;
-  }
-
-  .header h1 {
-    font-size: 20px;
-  }
-}
+    .khmer-font {
+      font-family: 'Khmer OS Battambang', sans-serif;
+    }
