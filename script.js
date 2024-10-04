@@ -1,47 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const checkboxes = document.querySelectorAll(".task-done");
-  const summaryList = document.getElementById("summary-list");
 
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-      updateSummary();
-    });
-  });
+    function switchLanguage() {
+      const selectedLanguage = document.getElementById('language-select').value;
+      const title = document.getElementById('title');
+      const dateLabel = document.getElementById('date-label');
+      const topPrioritiesTitle = document.getElementById('top-priorities-title');
+      const brainDumpTitle = document.getElementById('brain-dump-title');
+      const summaryTitle = document.querySelector('.summary h2');
 
-  function updateSummary() {
-    summaryList.innerHTML = "";
-    checkboxes.forEach((checkbox) => {
-      const taskIndex = checkbox.getAttribute("data-task");
-      const taskInput = document.getElementById(`task-${taskIndex}`);
-      if (checkbox.checked) {
-        const li = document.createElement("li");
-        li.textContent = `${taskInput.value} - Completed`;
-        li.classList.add("completed-task");
-        summaryList.appendChild(li);
+      if (selectedLanguage === 'kh') {
+        title.textContent = 'ផែនការថ្មីប្រចាំថ្ងៃ';
+        dateLabel.textContent = 'កាលបរិច្ឆេទ :';
+        topPrioritiesTitle.textContent = 'អាទិភាពខ្ពស់ :';
+        brainDumpTitle.textContent = 'ការដាក់ទឹកចិត្ត';
+        summaryTitle.textContent = 'សេចក្តីសង្ខេបនៃការងារ';
+      } else {
+        title.textContent = 'DAILY TIMEBOXING PLANNER';
+        dateLabel.textContent = 'DATE :';
+        topPrioritiesTitle.textContent = 'TOP PRIORITIES :';
+        brainDumpTitle.textContent = 'BRAIN DUMP';
+        summaryTitle.textContent = 'Summary of Tasks';
       }
+    }
+
+    document.querySelectorAll('.task-done').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const taskId = this.getAttribute('data-task');
+        const taskInput = document.getElementById(`task-${taskId}`);
+        const summaryList = document.getElementById('summary-list');
+
+        if (this.checked) {
+          const listItem = document.createElement('li');
+          listItem.textContent = taskInput.value;
+          listItem.classList.add('completed-task');
+          summaryList.appendChild(listItem);
+        } else {
+          const items = summaryList.getElementsByTagName('li');
+          for (let i = 0; i < items.length; i++) {
+            if (items[i].textContent === taskInput.value) {
+              summaryList.removeChild(items[i]);
+              break;
+            }
+          }
+        }
+      });
     });
-  }
-});
-
-function changeLanguage() {
-  const lang = document.getElementById("language").value;
-  const title = document.getElementById("title");
-  const dateLabel = document.getElementById("date-label");
-  const topPrioritiesTitle = document.getElementById("top-priorities-title");
-  const brainDumpTitle = document.getElementById("brain-dump-title");
-  const summaryTitle = document.getElementById("summary-title");
-
-  if (lang === "km") {
-    title.textContent = "កម្រាលពេលវេលាថ្ងៃរៀបចំ";
-    dateLabel.textContent = "ថ្ងៃ៖";
-    topPrioritiesTitle.textContent = "អាទិភាពខ្ពស់៖";
-    brainDumpTitle.textContent = "ការសន្សំបញ្ញើ";
-    summaryTitle.textContent = "សង្ខេបនៃភារកិច្ច៖";
-  } else {
-    title.textContent = "DAILY TIMEBOXING PLANNER";
-    dateLabel.textContent = "DATE:";
-    topPrioritiesTitle.textContent = "TOP PRIORITIES:";
-    brainDumpTitle.textContent = "BRAIN DUMP";
-    summaryTitle.textContent = "SUMMARY OF TASKS:";
-  }
-}
+  
